@@ -2,10 +2,11 @@ import axios from 'axios';
 import { Dispatch } from 'redux';
 import { Task } from '../interfaces/Task';
 import { addTaskFailure, addTaskSuccess, listTasksFailure, listTasksSuccess } from '../slices';
+import { config } from '../config';
 
 export const apiListTasksRequest = () => {
   return (dispatch: Dispatch) => {
-    axios.get(`${process.env.API_DOMAIN}/tasks`)
+    axios.get(`${config.APIDomain}/tasks`)
       .then(response => {
         dispatch(listTasksSuccess(response.data));
       })
