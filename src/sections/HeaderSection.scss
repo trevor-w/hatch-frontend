@@ -1,0 +1,30 @@
+.headerSection {
+  align-items: center;
+  justify-content: space-between;
+
+  .textDeleteAllTask {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+}
+
+.buttonDeleteAllTasks {
+
+}
+
+.buttonBack {
+  background-color: grey;
+  color: #FFF;
+}
+
+.buttonDeleteAllTasks + .buttonBack {
+  margin-left: 2rem;
+}
+
+.popupWrapper {
+  padding: 3rem;
+  .popupTitle + .rowButtons {
+    margin-top: 2rem;
+  }
+}

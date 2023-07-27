@@ -1,24 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import styles from "./App.scss";
+import HeaderSection from './sections/HeaderSection';
+import PanelSection from './sections/PanelSection';
+import ListSection from './sections/ListSection';
+import { apiListTasksRequest } from './actions/listTasks';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from './store';
+import { config } from './config';
 
 function App() {
+
+  const dispatch: AppDispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(apiListTasksRequest());
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
+  // long polling
+  // In real practice we can change it to socket
+  const interval = setInterval(() => {
+    dispatch(apiListTasksRequest());
+  }, config.PollingInterval); 
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={styles.app}>
+      <HeaderSection className={styles.section} />
+      <PanelSection className={styles.section} />
+      <ListSection className={styles.section} />
     </div>
   );
 }

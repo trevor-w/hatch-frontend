@@ -1,0 +1,11 @@
+.app {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: rgb(235,235,235);
+  padding: 5rem;
+
+  .section + .section {
+    margin-top: 2rem;
+  }
+
+}

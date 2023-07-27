@@ -1,0 +1,9 @@
+.listSection {
+  align-items: flex-start;
+  justify-content: space-between;
+  column-gap: 5rem;
+  > div {
+    flex: 1;
+    justify-content: left;
+  }
+}

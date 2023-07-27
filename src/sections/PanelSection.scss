@@ -1,0 +1,12 @@
+.panelSection {
+
+    align-items: center;
+    justify-content: space-between;
+
+    .inputAdd + .buttonAdd {
+        margin-left: 1rem;
+      }
+      .panel {
+        justify-content: space-between;
+      }
+}
