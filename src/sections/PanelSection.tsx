@@ -33,7 +33,7 @@ const PanelSection = (props: CommonComponentProps) => {
             return;
         }
 
-        dispatch(apiAddTaskRequest({id: "", title: newTaskTitle, status: TaskStatus.TODO}));
+        dispatch(apiAddTaskRequest({id: "", title: newTaskTitle, status: TaskStatus.TODO, createdAt: 0, doneAt: 0}));
         setNewTaskTitle("");
     }
 

@@ -8,7 +8,7 @@ export const apiAddTaskRequest = (task: Task) => {
   return (dispatch: Dispatch) => {
     axios.post(`${config.APIDomain}/tasks`, task)
       .then(response => {
-        dispatch(addTaskSuccess(response.data));
+        dispatch(addTaskSuccess(response.data as Task));
       })
       .catch(error => {
         console.log(error);

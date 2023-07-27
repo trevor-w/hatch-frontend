@@ -35,7 +35,7 @@ export const taskSlice = createSlice({
             const i = state.list.findIndex(s => s.title > action.payload.title);
             let newList = [];
             if (i < 0) {
-                newList = [...state.list, { id: action.payload.id, title: action.payload.title, status: TaskStatus.TODO }];
+                newList = [...state.list, { id: action.payload.id, title: action.payload.title, status: TaskStatus.TODO, createdAt: action.payload.createdAt, doneAt: action.payload.doneAt }];
             } else {
                 const tmpList = [...state.list];
                 tmpList.splice(i, 0, action.payload);
@@ -51,13 +51,11 @@ export const taskSlice = createSlice({
                 ...state
             }
         },
-        updateTaskStatusSuccess: (state, action: PayloadAction<{id: string, status: TaskStatus}>) => {
-
+        updateTaskStatusSuccess: (state, action: PayloadAction<{id: string, status: TaskStatus, doneAt: number}>) => {
             const i = state.list.findIndex(task => task.id == action.payload.id);
-
             return {
                 ...state,
-                list: state.list.map(task => task.id == action.payload.id ? {...task, status: action.payload.status} : task)
+                list: state.list.map(task => task.id == action.payload.id ? {...task, status: action.payload.status, doneAt: action.payload.doneAt} : task)
             }
         },
         updateTaskStatusFailure: (state, action: PayloadAction<Task>) => {

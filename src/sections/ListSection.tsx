@@ -8,6 +8,7 @@ import PanelSection from "./PanelSection";
 import { useSelector } from "react-redux";
 import { taskState } from "../slices";
 import { TaskStatus } from "../interfaces/Task";
+import { config } from "../config";
 
 const ListSection = (props: CommonComponentProps) => {
 
@@ -37,6 +38,11 @@ const ListSection = (props: CommonComponentProps) => {
                     break;
             }
 
+        }
+
+        if (doneList.length > config.doneListLimit) {
+            doneList = doneList.sort((a, b) => a.doneAt > b.doneAt ? -1 : 1).slice(0, config.doneListLimit);
+            doneList.sort((a, b) => a.title < b.title ? -1 : 1);
         }
 
         return {

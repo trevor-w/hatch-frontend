@@ -8,7 +8,7 @@ export const apiUpdateTaskStatusRequest = (id: string, status: TaskStatus) => {
   return (dispatch: Dispatch) => {
     axios.patch(`${config.APIDomain}/tasks/${id}`, {status: status})
       .then(response => {
-        dispatch(updateTaskStatusSuccess({id, status}));
+        dispatch(updateTaskStatusSuccess({id, status, doneAt: response.data.timestamp}));
       })
       .catch(error => {
         console.log(error);

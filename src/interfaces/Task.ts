@@ -12,5 +12,7 @@ export interface APITaskResponse {
 export interface Task {
     id: string;
     title: string;
-    status: TaskStatus
+    status: TaskStatus;
+    createdAt: number;
+    doneAt: number;
 }
